@@ -278,6 +278,8 @@
   color: #01579b;
 }
 
+
+
   </style>
 </head>
 <body>
@@ -292,7 +294,7 @@
   <a href="#" id="cart-link">Cart</a>
   <button class="theme-btn" id="theme-toggle">🌙</button>
 </div>
-    <div class="hamburger" id="hamburger">
+    <div  class="hamburger" id="hamburger">
       <div></div><div></div><div></div>
     </div>
   </nav>
@@ -310,7 +312,13 @@
       <p>Your cart is empty.</p>
     </div>
     <div class="cart-footer">Total: $<span id="cart-total">0.00</span></div>
-    <button class="checkout-btn">Checkout</button>
+    
+    <button class="checkout-btn">checkout</button>
+     
+     <body>
+    
+
+    
   </aside>
 
   <section id="about" style="padding: 3rem 2rem; background-color: #f5f7fa; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #37474f; max-width: 800px; margin: 2rem auto; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
@@ -407,7 +415,7 @@
   </head>
   <body>
     <nav>
-        <a href="#contact" aria-label="Jump to Contact section">Contact</a>
+        <a href="#contact" aria-label="Jump to Contact section"></a>
       </nav>
     <main>
       <section>
@@ -613,5 +621,173 @@
     });
   </script>
   
+<section id="checkout-form" style="display: none;" class="checkout-section">
+  <h2>Checkout Information</h2>
+  <form id="form">
+    <div class="form-grid">
+      <div class="form-group">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" name="name" required>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+
+      <div class="form-group">
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" name="phone" required>
+      </div>
+
+      <div class="form-group full-width">
+        <label for="address">Shipping Address</label>
+        <textarea id="address" name="address" rows="3" required></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="city">City</label>
+        <input type="text" id="city" name="city" required>
+      </div>
+
+      <div class="form-group">
+        <label for="state">State/Province</label>
+        <input type="text" id="state" name="state" required>
+      </div>
+
+      <div class="form-group">
+        <label for="zip">Zip/Postal Code</label>
+        <input type="text" id="zip" name="zip" required>
+      </div>
+
+      <div class="form-group">
+        <label for="country">Country</label>
+        <input type="text" id="country" name="country" required>
+      </div>
+
+      <div class="form-group full-width">
+        <label for="payment">Payment Method</label>
+        <select id="payment" name="payment" required>
+          <option value="">-- Select --</option>
+          <option value="card">Credit/Debit Card</option>
+          <option value="paypal">PayPal</option>
+          <option value="cod">Cash on Delivery</option>
+        </select>
+      </div>
+
+      <div class="form-group full-width">
+        <label for="notes">Order Notes (Optional)</label>
+        <textarea id="notes" name="notes" rows="2"></textarea>
+      </div>
+    </div>
+
+    <button type="submit">Place Order</button>
+  </form>
+</section>
+<style>
+  .checkout-section {
+  padding: 2rem;
+  max-width: 800px;
+  margin: 2rem auto;
+  background: linear-gradient(135deg, #ffffff, #f0f4ff);
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  font-family: 'Poppins', sans-serif;
+  color: #333;
+}
+
+.checkout-section h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  color: #1a237e;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem 2rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.full-width {
+  grid-column: span 2;
+}
+
+.checkout-section label {
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.checkout-section input,
+.checkout-section textarea,
+.checkout-section select {
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.checkout-section input:focus,
+.checkout-section textarea:focus,
+.checkout-section select:focus {
+  border-color: #3949ab;
+  box-shadow: 0 0 0 3px rgba(57, 73, 171, 0.2);
+  outline: none;
+}
+
+.checkout-section button[type="submit"] {
+  margin-top: 2rem;
+  background-color: #3949ab;
+  color: white;
+  border: none;
+  padding: 0.9rem 1.5rem;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  display: block;
+  width: 100%;
+}
+
+.checkout-section button[type="submit"]:hover {
+  background-color: #1a237e;
+  transform: scale(1.02);
+}
+
+</style>
+  <script>
+    document.querySelector('.checkout-btn').addEventListener('click', () => {
+  const formSection = document.getElementById('checkout-form');
+  formSection.style.display = 'block';
+  formSection.scrollIntoView({ behavior: 'smooth' });
+});
+
+document.getElementById('form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  alert('Order placed successfully! Thank you for shopping with Gaurav Shop.');
+  this.reset();
+  document.getElementById('checkout-form').style.display = 'none';
+  document.getElementById('cart-sidebar').classList.remove('open');
+});
+
+document.getElementById('form').addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  // Optional: Show a brief success message before hiding the form
+  alert('✅ Order placed successfully! Thank you for shopping with Gaurav Shop.');
+
+  this.reset();
+  document.getElementById('checkout-form').style.display = 'none';
+  document.getElementById('cart-sidebar').classList.remove('open');
+});
+
+  </script>
 </body>
 </html>
